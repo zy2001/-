@@ -1,9 +1,12 @@
 package com.openjudge.backend.DTO;
 
+import lombok.Data;
+
 /**
  * Created by zy on 2020/1/22
  */
 
+@Data
 public class ProblemItemDTO {
 
     private Integer pid;
@@ -12,43 +15,4 @@ public class ProblemItemDTO {
     private Integer accept;
     private Integer total;
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDiff() {
-        return diff;
-    }
-
-    public void setDiff(String diff) {
-        this.diff = diff;
-    }
-
-    public Integer getAccept() {
-        return accept;
-    }
-
-    public void setAccept(Integer accept) {
-        this.accept = accept;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
 }

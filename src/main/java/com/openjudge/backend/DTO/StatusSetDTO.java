@@ -5,13 +5,12 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * Created by zy on 2020/1/22
+ * Created by zy on 2020/2/3
  */
 
 @Data
-public class ProblemSetDTO {
-
-    private List<ProblemItemDTO> itemList;
+public class StatusSetDTO {
+    private List<SubmitItemDTO> itemList;
     private Integer total;
     private Integer size;
 

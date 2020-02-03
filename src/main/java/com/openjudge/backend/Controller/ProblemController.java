@@ -50,6 +50,7 @@ public class ProblemController {
             result.setMessage("题目信息获取成功");
             result.setErrorcode("200");
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return result;
     }

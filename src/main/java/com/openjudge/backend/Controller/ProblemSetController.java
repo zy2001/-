@@ -54,7 +54,7 @@ public class ProblemSetController {
             result.setSuccess(true);
             result.setData(problemSetDTO);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return result;
     }

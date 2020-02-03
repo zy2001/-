@@ -1,25 +1,23 @@
-package com.openjudge.backend.Domain;
+package com.openjudge.backend.DTO;
 
 import lombok.Data;
 
 import java.util.Date;
 
 /**
- * Created by zy on 2020/1/29
+ * Created by zy on 2020/2/3
  */
 
 @Data
-public class Submit {
+public class SubmitItemDTO {
     private Integer rid;
-    private Integer pid;
-    private Integer uid;
-    private String code;
+//    private Integer pid;
+//    private Integer uid;
+    private String username;
     private String language;
     private Integer status;
     private Integer runTime;
     private Integer runMemory;
-    private String compilationMessage;
     private Date gmtCreated;
-    private Date gmtModified;
 
 }

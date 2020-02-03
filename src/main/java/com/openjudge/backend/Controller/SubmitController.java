@@ -1,6 +1,8 @@
 package com.openjudge.backend.Controller;
 
 import com.openjudge.backend.DTO.ResponseResult;
+import com.openjudge.backend.DTO.StatusSetDTO;
+import com.openjudge.backend.DTO.SubmitItemDTO;
 import com.openjudge.backend.Mapper.SubmitMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -42,19 +45,38 @@ public class SubmitController {
             System.out.println("code:" + params.get("code"));
             //补充提交参数
             params.put("status", "0");
-            params.put("runTime", null);
-            params.put("runMemory", null);
             Date date = new Date(System.currentTimeMillis());
             params.put("gmtCreated", date);
             params.put("gmtModified", date);
             //插入提交数据
             boolean flag = submitMapper.insertSubmit(params);
             //插入成功返回成功信息
-            if(flag) {
+            if (flag) {
                 result.setMessage("提交成功");
                 result.setSuccess(true);
                 result.setErrorcode("200");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @PostMapping("/submitStatus")
+    public ResponseResult submitStatus(@RequestParam("pid") Integer pid,
+                                       @RequestParam("size") Integer size,
+                                       @RequestParam("page") Integer page) {
+        ResponseResult result = new ResponseResult();
+        try {
+            List<SubmitItemDTO> submitItemDTOList = submitMapper.selectStatusByPId(pid, (page - 1) * size, size);
+            StatusSetDTO statusSetDTO = new StatusSetDTO();
+            statusSetDTO.setItemList(submitItemDTOList);
+            statusSetDTO.setTotal(submitMapper.selectCountByPId(pid));
+            statusSetDTO.setSize(size);
+            result.setErrorcode("200");
+            result.setSuccess(true);
+            result.setMessage("请求成功");
+            result.setData(statusSetDTO);
         } catch (Exception e) {
             e.printStackTrace();
         }
