@@ -5,6 +5,7 @@ import com.openjudge.backend.Domain.Problem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface ProblemMapper {
 
     @Select("SELECT * FROM PROBLEM WHERE PID = #{pid}")
     Problem selectProblemByPid(@Param("pid") Integer pid);
+
+    @Update("UPDATE PROBLEM SET TOTAL = TOTAL + 1 WHERE PID = #{pid}")
+    void updateTotalByPid(@Param("pid") Object pid);
 }
