@@ -1,6 +1,6 @@
 package com.openjudge.backend.Mapper;
 
-import com.mysql.cj.protocol.Resultset;
+
 import com.openjudge.backend.Domain.Problem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zy on 2020/1/22
@@ -27,4 +28,7 @@ public interface ProblemMapper {
 
     @Update("UPDATE PROBLEM SET TOTAL = TOTAL + 1 WHERE PID = #{pid}")
     void updateTotalByPid(@Param("pid") Object pid);
+
+    @Select("SELECT TIME_LIMIT as timeLimit, MEMORY_LIMIT as memoryLimit, CASE_COUNT as caseCount FROM PROBLEM WHERE PID = #{pid}")
+    Map selectRunLimit(Map<String, Object> params);
 }

@@ -4,11 +4,10 @@ import com.openjudge.backend.DTO.ResponseResult;
 import com.openjudge.backend.DTO.UserDTO;
 import com.openjudge.backend.Domain.User;
 import com.openjudge.backend.Mapper.UserMapper;
+import com.openjudge.backend.Config.RabbitMQConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
@@ -24,6 +23,9 @@ public class LoginController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @PostMapping("/login")
     public ResponseResult login(@RequestParam("username") String username,
