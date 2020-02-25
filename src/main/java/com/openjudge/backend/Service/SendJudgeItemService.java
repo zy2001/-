@@ -23,8 +23,6 @@ public class SendJudgeItemService {
 
     private final Logger logger = LoggerFactory.getLogger(SendJudgeItemService.class);
 
-    private static String need[] = {"rid", "pid", "language", "timeLimit", "memoryLimit", "caseCount", "code"};
-
     @Autowired
     private ProblemMapper problemMapper;
 
@@ -37,29 +35,8 @@ public class SendJudgeItemService {
         for (String i : map.keySet()) {
             params.put(i, map.get(i));
         }
-//        params.remove("gmtCreated");
-//        params.remove("gmtModified");
         logger.info(JSON.toJSONString(params));
         rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.JUDGE_ITEM_ROUTING_KEY, JSON.toJSONString(params));
     }
 
-    public String getMmessage(Map<String, Object> params) {
-        StringBuilder res = new StringBuilder();
-        for (String s : need) {
-            StringBuilder tmp = new StringBuilder();
-            String tmpValue = params.get(s).toString();
-            for (int i = 0; i < tmpValue.length(); i++) {
-                if (tmpValue.charAt(i) == '{') {
-                    tmp.append("{{");
-                } else if (tmpValue.charAt(i) == '}') {
-                    tmp.append("}}");
-                } else {
-                    tmp.append(tmpValue.charAt(i));
-                }
-            }
-            res.append("{").append(tmp.toString()).append("}");
-        }
-        res.append((char)(0));
-        return res.toString();
-    }
 }

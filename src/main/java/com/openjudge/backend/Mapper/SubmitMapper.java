@@ -17,7 +17,7 @@ public interface SubmitMapper {
     @Options(keyColumn = "RID", keyProperty = "rid", useGeneratedKeys = true)
     int insertSubmit(Map<String, Object> params);
 
-    @Select("SELECT RID, USERNAME, LANGUAGE, STATUS, RUN_TIME, RUN_MEMORY, SUBMIT.GMT_CREATED FROM SUBMIT, USER WHERE SUBMIT.UID = USER.ID AND SUBMIT. PID = #{pid} ORDER BY RID DESC LIMIT #{offset}, #{size}")
+    @Select("SELECT RID, PID, USERNAME, LANGUAGE, STATUS, RUN_TIME, RUN_MEMORY, SUBMIT.GMT_CREATED FROM SUBMIT, USER WHERE SUBMIT.UID = USER.ID AND SUBMIT. PID = #{pid} ORDER BY RID DESC LIMIT #{offset}, #{size}")
     List<SubmitItemDTO> selectStatusByPId(@Param("pid") Integer pid, @Param("offset") Integer offset, @Param("size") Integer size);
 
     @Select("SELECT COUNT(*) FROM SUBMIT WHERE PID = #{pid}")
@@ -28,4 +28,10 @@ public interface SubmitMapper {
 
     @Update("UPDATE SUBMIT SET STATUS = #{status}, RUN_TIME = #{runTime}, RUN_MEMORY = #{runMemory}, COMPILATION_MESSAGE = #{compilationMessage} WHERE RID = #{rid}")
     void updateStatusByRid(Map params);
+
+    @Select("SELECT RID, PID, USERNAME, LANGUAGE, STATUS, RUN_TIME, RUN_MEMORY, SUBMIT.GMT_CREATED FROM SUBMIT, USER WHERE SUBMIT.UID = USER.ID ORDER BY RID DESC LIMIT #{offset}, #{size}")
+    List<SubmitItemDTO> selectStatus(@Param("offset") Integer offset, @Param("size") Integer size);
+
+    @Select("SELECT COUNT(*) FROM SUBMIT")
+    Integer selectCount();
 }

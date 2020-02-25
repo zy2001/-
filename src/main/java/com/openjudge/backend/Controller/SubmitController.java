@@ -74,15 +74,23 @@ public class SubmitController {
     }
 
     @PostMapping("/submitStatus")
-    public ResponseResult submitStatus(@RequestParam("pid") Integer pid,
+    public ResponseResult submitStatus(@RequestParam(value = "pid", required = false) Integer pid,
                                        @RequestParam("size") Integer size,
                                        @RequestParam("page") Integer page) {
         ResponseResult result = new ResponseResult();
         try {
-            List<SubmitItemDTO> submitItemDTOList = submitMapper.selectStatusByPId(pid, (page - 1) * size, size);
+
+            List<SubmitItemDTO> submitItemDTOList;
             StatusSetDTO statusSetDTO = new StatusSetDTO();
+            if(null != pid) {
+                submitItemDTOList = submitMapper.selectStatusByPId(pid, (page - 1) * size, size);
+                statusSetDTO.setTotal(submitMapper.selectCountByPId(pid));
+            }
+            else {
+                submitItemDTOList = submitMapper.selectStatus((page - 1) * size, size);
+                statusSetDTO.setTotal(submitMapper.selectCount());
+            }
             statusSetDTO.setItemList(submitItemDTOList);
-            statusSetDTO.setTotal(submitMapper.selectCountByPId(pid));
             statusSetDTO.setSize(size);
             result.setErrorcode("200");
             result.setSuccess(true);

@@ -1,24 +1,27 @@
 Manifest-Version: 1.0
 Main-Class: com.openjudge.backend.BackendApplication
-Class-Path: spring-boot-starter-jdbc-2.2.3.RELEASE.jar jackson-core-2.10
- .2.jar jackson-module-parameter-names-2.10.2.jar jboss-logging-3.4.1.Fi
- nal.jar spring-expression-5.2.3.RELEASE.jar spring-webmvc-5.2.3.RELEASE
- .jar jakarta.validation-api-2.0.2.jar jul-to-slf4j-1.7.30.jar mybatis-s
- pring-boot-starter-2.1.0.jar HikariCP-3.4.2.jar spring-boot-starter-tom
- cat-2.2.3.RELEASE.jar spring-core-5.2.3.RELEASE.jar mysql-connector-jav
- a-8.0.17.jar tomcat-embed-el-9.0.30.jar spring-jcl-5.2.3.RELEASE.jar sp
- ring-boot-starter-json-2.2.3.RELEASE.jar tomcat-embed-websocket-9.0.30.
- jar log4j-to-slf4j-2.12.1.jar mybatis-spring-boot-autoconfigure-2.1.0.j
- ar classmate-1.5.1.jar spring-jdbc-5.2.3.RELEASE.jar jackson-databind-2
- .10.2.jar tomcat-embed-core-9.0.30.jar slf4j-api-1.7.30.jar spring-aop-
- 5.2.3.RELEASE.jar snakeyaml-1.25.jar logback-classic-1.2.3.jar spring-t
- x-5.2.3.RELEASE.jar spring-context-5.2.3.RELEASE.jar jackson-annotation
- s-2.10.2.jar spring-boot-starter-validation-2.2.3.RELEASE.jar spring-be
- ans-5.2.3.RELEASE.jar jackson-datatype-jdk8-2.10.2.jar jakarta.annotati
- on-api-1.3.5.jar mybatis-spring-2.0.2.jar logback-core-1.2.3.jar jackso
- n-datatype-jsr310-2.10.2.jar mybatis-3.5.2.jar spring-boot-autoconfigur
- e-2.2.3.RELEASE.jar log4j-api-2.12.1.jar spring-boot-starter-web-2.2.3.
- RELEASE.jar spring-boot-2.2.3.RELEASE.jar spring-web-5.2.3.RELEASE.jar 
- spring-boot-starter-2.2.3.RELEASE.jar hibernate-validator-6.0.18.Final.
- jar spring-boot-starter-logging-2.2.3.RELEASE.jar
+Class-Path: spring-boot-starter-validation-2.2.3.RELEASE.jar lombok-1.18
+ .10.jar tomcat-embed-websocket-9.0.30.jar jackson-module-parameter-name
+ s-2.10.2.jar tomcat-embed-el-9.0.30.jar spring-amqp-2.2.3.RELEASE.jar s
+ pring-boot-starter-web-2.2.3.RELEASE.jar log4j-api-2.12.1.jar spring-bo
+ ot-starter-jdbc-2.2.3.RELEASE.jar snakeyaml-1.25.jar spring-jdbc-5.2.3.
+ RELEASE.jar mybatis-spring-boot-autoconfigure-2.1.0.jar mybatis-spring-
+ 2.0.2.jar spring-web-5.2.3.RELEASE.jar logback-classic-1.2.3.jar jakart
+ a.validation-api-2.0.2.jar slf4j-api-1.7.30.jar classmate-1.5.1.jar jac
+ kson-core-2.10.2.jar spring-boot-starter-tomcat-2.2.3.RELEASE.jar jacks
+ on-datatype-jsr310-2.10.2.jar spring-messaging-5.2.3.RELEASE.jar mybati
+ s-spring-boot-starter-2.1.0.jar tomcat-embed-core-9.0.30.jar spring-boo
+ t-starter-json-2.2.3.RELEASE.jar spring-beans-5.2.3.RELEASE.jar logback
+ -core-1.2.3.jar log4j-to-slf4j-2.12.1.jar jackson-datatype-jdk8-2.10.2.
+ jar HikariCP-3.4.2.jar spring-webmvc-5.2.3.RELEASE.jar spring-aop-5.2.3
+ .RELEASE.jar amqp-client-5.7.3.jar jackson-databind-2.10.2.jar spring-e
+ xpression-5.2.3.RELEASE.jar spring-boot-2.2.3.RELEASE.jar spring-boot-s
+ tarter-logging-2.2.3.RELEASE.jar spring-rabbit-2.2.3.RELEASE.jar hibern
+ ate-validator-6.0.18.Final.jar spring-boot-starter-amqp-2.2.3.RELEASE.j
+ ar mysql-connector-java-8.0.17.jar jackson-annotations-2.10.2.jar sprin
+ g-jcl-5.2.3.RELEASE.jar jul-to-slf4j-1.7.30.jar spring-context-5.2.3.RE
+ LEASE.jar spring-core-5.2.3.RELEASE.jar spring-boot-autoconfigure-2.2.3
+ .RELEASE.jar jakarta.annotation-api-1.3.5.jar spring-boot-starter-2.2.3
+ .RELEASE.jar spring-tx-5.2.3.RELEASE.jar fastjson-1.2.28.jar spring-ret
+ ry-1.2.5.RELEASE.jar jboss-logging-3.4.1.Final.jar mybatis-3.5.2.jar
 

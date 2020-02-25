@@ -31,4 +31,7 @@ public interface ProblemMapper {
 
     @Select("SELECT TIME_LIMIT as timeLimit, MEMORY_LIMIT as memoryLimit, CASE_COUNT as caseCount FROM PROBLEM WHERE PID = #{pid}")
     Map selectRunLimit(Map<String, Object> params);
+
+    @Update("UPDATE PROBLEM SET ACCEPT = ACCEPT + 1 WHERE PID = #{pid}")
+    void updateAcceptByPid(@Param("pid") Object pid);
 }

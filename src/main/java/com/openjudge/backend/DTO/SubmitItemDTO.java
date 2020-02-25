@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 public class SubmitItemDTO {
     private Integer rid;
-//    private Integer pid;
+    private Integer pid;
 //    private Integer uid;
     private String username;
     private String language;
