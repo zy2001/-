@@ -32,6 +32,9 @@ public interface SubmitMapper {
     @Select("SELECT RID, PID, USERNAME, LANGUAGE, STATUS, RUN_TIME, RUN_MEMORY, SUBMIT.GMT_CREATED FROM SUBMIT, USER WHERE SUBMIT.UID = USER.ID ORDER BY RID DESC LIMIT #{offset}, #{size}")
     List<SubmitItemDTO> selectStatus(@Param("offset") Integer offset, @Param("size") Integer size);
 
-    @Select("SELECT COUNT(*) FROM SUBMIT")
+    @Select("SELECT COUNT(*) FROM SUBMIT WHERE PID != -1")
     Integer selectCount();
+
+    @Select("SELECT RID as rid, PID as pid, CODE as code, LANGUAGE as language FROM SUBMIT WHERE STATUS = 0")
+    List<Map<String, Object>> selectAllSubmits();
 }

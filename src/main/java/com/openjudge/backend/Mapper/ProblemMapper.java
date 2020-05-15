@@ -20,7 +20,7 @@ public interface ProblemMapper {
     @Select("SELECT * FROM PROBLEM ORDER BY PID LIMIT #{offset}, #{size}")
     List<Problem> selectProblemItemByPage(@Param("offset") Integer i, @Param("size") Integer size);
 
-    @Select("SELECT COUNT(*) FROM PROBLEM")
+    @Select("SELECT COUNT(*) FROM PROBLEM WHERE PID != -1")
     Integer selectCount();
 
     @Select("SELECT * FROM PROBLEM WHERE PID = #{pid}")

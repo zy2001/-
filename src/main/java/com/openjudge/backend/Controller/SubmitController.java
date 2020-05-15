@@ -21,7 +21,6 @@ import java.util.Map;
 @CrossOrigin
 @RestController
 public class SubmitController {
-
     @Autowired
     private SubmitMapper submitMapper;
 
@@ -32,11 +31,26 @@ public class SubmitController {
     private SendJudgeItemService sendJudgeItemService;
 
     @GetMapping("/send")
-    public Object sendMessage() {
+    public String  sendMessage() {
         Map<String, Object> map = submitMapper.selectSubmit();
+        if (map == null) return "null";
+        String value = map.get("pid").toString();
+        map.put("pid", value);
         sendJudgeItemService.send(map);
         return "ok";
     }
+
+    @GetMapping("/sendAll")
+    public String sendAll() {
+        List<Map<String, Object>> list = submitMapper.selectAllSubmits();
+        for (Map<String, Object> map : list) {
+            String value = map.get("pid").toString();
+            map.put("pid", value);
+            sendJudgeItemService.send(map);
+        }
+        return "submit count: " + String.valueOf(list.size());
+    }
+
 
     @PostMapping("/submit")
     public ResponseResult submit(@RequestParam Map<String, Object> params) {
@@ -82,11 +96,10 @@ public class SubmitController {
 
             List<SubmitItemDTO> submitItemDTOList;
             StatusSetDTO statusSetDTO = new StatusSetDTO();
-            if(null != pid) {
+            if (null != pid) {
                 submitItemDTOList = submitMapper.selectStatusByPId(pid, (page - 1) * size, size);
                 statusSetDTO.setTotal(submitMapper.selectCountByPId(pid));
-            }
-            else {
+            } else {
                 submitItemDTOList = submitMapper.selectStatus((page - 1) * size, size);
                 statusSetDTO.setTotal(submitMapper.selectCount());
             }
